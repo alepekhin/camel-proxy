@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+		http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd ">
+
+    <camelContext id="camelContext" xmlns="http://camel.apache.org/schema/spring">
+        <route>
+            <from uri="timer:timer?repeatCount=1"/>
+            <to uri="https://v2.jokeapi.dev/joke/Any?proxyAuthHost=abcd"/>
+            <log message="${body}"/>
+        </route>
+    </camelContext>
+
+</beans>
+
